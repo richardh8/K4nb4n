@@ -83,7 +83,7 @@ npm install
 npm run dev
 ```
 
-The dev server starts at **http://localhost:3000**.
+The dev server starts at **http://localhost:3001**.
 
 ---
 
