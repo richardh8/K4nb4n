@@ -1,0 +1,851 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.85); /* Dark blur */
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 2rem;
+}
+
+.modal {
+  width: 100%;
+  max-width: 900px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  position: relative;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem 1rem; /* Reduced from 1rem 1.5rem */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.5);
+  gap: 1.5rem;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.headerCloseBtn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+}
+
+.headerCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+
+/* Comments Section */
+.commentsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.5rem 0 2rem 0;
+}
+
+.modalCreationFooter {
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  color: #64748b;
+  font-style: italic;
+  text-align: right;
+}
+
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.commentMain {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.commentHeader, .commentOwnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.commentOwnHeader {
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+  padding-bottom: 0.25rem;
+}
+
+.commentUser {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.commentDate {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.commentContent {
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.commentContent p {
+  margin: 0.5rem 0;
+}
+
+.commentActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.commentActions button {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.commentActions button:hover {
+  color: #f8fafc;
+  text-decoration: underline;
+}
+
+.replyItem {
+  margin-left: 2rem;
+  display: flex;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.015);
+  border-left: 2px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.replyIcon {
+  color: #475569;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.replyContent {
+  flex: 1;
+}
+
+.replyInputArea {
+  margin-left: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.replyInputArea textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 0.85rem;
+  resize: none;
+  height: 40px;
+  outline: none;
+}
+
+.replyInputArea button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.commentInputMain {
+  display: flex;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.commentInputMain textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 0.95rem;
+  resize: none;
+  min-height: 24px;
+  outline: none;
+}
+
+.commentInputMain button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.commentInputMain button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.saveBtn {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  font-weight: 800;
+  font-size: 0.75rem; /* Reduced from 0.85rem */
+  padding: 0.35rem 0.75rem; /* Reduced from 0.5rem 1rem */
+  border-radius: 0.375rem; /* Reduced from 0.5rem */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem; /* Reduced from 0.5rem */
+  transition: all 0.2s;
+}
+
+.priorityLabel {
+  font-size: 0.6rem; /* Reduced from 0.65rem */
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.15rem 0.35rem; /* Reduced from 0.2rem 0.4rem */
+  border-radius: 0.2rem;
+}
+
+.saveBtn:hover:not(:disabled) {
+  background: #7dd3fc;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+}
+
+.saveBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.closeLink {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.closeLink:hover {
+  color: #ef4444;
+}
+
+.twoCol {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.leftCol {
+  flex: 2;
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-y: auto;
+}
+
+.rightCol {
+  flex: 1;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.3);
+  overflow-y: auto;
+}
+
+.nameInput {
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 1.75rem; /* Slightly smaller for better wrapping */
+  font-weight: 800;
+  color: #f8fafc;
+  margin-bottom: 1.5rem; /* Reduced from 2rem */
+  outline: none;
+  transition: border-color 0.2s;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  resize: none;
+  overflow: hidden;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+.nameInput:focus {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.sectionHeader {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.descSection {
+  margin-bottom: 3rem;
+}
+
+.markdownDisplay {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  min-height: 100px;
+  cursor: text;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.descInput {
+  width: 100%;
+  min-height: 200px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid #38bdf8;
+  border-radius: 0.5rem;
+  color: #f8fafc;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 0.95rem;
+  resize: vertical;
+  outline: none;
+  line-height: 1.5;
+}
+
+.todos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.5rem;
+}
+
+.todoTitle {
+  flex: 1;
+  color: #f8fafc;
+  font-size: 0.95rem;
+}
+
+.todoDoneTitle {
+  flex: 1;
+  color: #64748b;
+  text-decoration: line-through;
+  font-size: 0.95rem;
+}
+
+.deleteTodo {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.addTodoInline input {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+  outline: none;
+}
+
+.fieldGroup {
+  margin-bottom: 1.5rem;
+}
+
+.fieldGroup label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.fieldGroup select.darkSelect, 
+.fieldGroup select.darkSelectAssignee,
+.fieldGroup input.darkDate {
+  width: 100%;
+  background: #020617 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc !important;
+  padding: 0.625rem;
+  border-radius: 0.375rem;
+  outline: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  appearance: none;
+  color-scheme: dark !important;
+}
+
+/* For date inputs, we need to show the icon but style it */
+.fieldGroup input.darkDate::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1);
+  opacity: 0.6;
+}
+
+.fieldGroup input.darkDate::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+.fieldGroup select.darkSelectAssignee option {
+  color: #f8fafc;
+}
+
+.fieldGroup select.darkSelectPriority {
+  width: 100%;
+  background: #020617; /* Same board background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.625rem;
+  border-radius: 0.375rem;
+  outline: none;
+  font-size: 0.75rem;
+  font-weight: 800;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  appearance: none;
+}
+
+.darkSelectPriority[data-priority="CRITICAL"] { color: #fca5a5; }
+.darkSelectPriority[data-priority="HIGH"] { color: #fdba74; }
+.darkSelectPriority[data-priority="MEDIUM"] { color: #93c5fd; }
+.darkSelectPriority[data-priority="LOW"] { color: #cbd5e1; }
+
+.customSelectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.statusDot {
+  position: absolute;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.statusDot[data-status="Backlog"] { background-color: #94a3b8; }
+.statusDot[data-status="To Do"] { background-color: #8b5cf6; }
+.statusDot[data-status="Doing"] { background-color: #3b82f6; }
+.statusDot[data-status="Done"] { background-color: #10b981; }
+
+.fieldGroup select:focus, .fieldGroup input.darkDate:focus {
+  border-color: #38bdf8;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dateLabel {
+  font-size: 0.7rem; /* Reduced from 0.75rem */
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.tag button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.smallInput {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.375rem;
+  border-radius: 0.25rem;
+  outline: none;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.typeaheadMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem;
+  margin-top: 0.25rem;
+  z-index: 20;
+  max-height: 150px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.typeaheadOption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.typeaheadOption:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #38bdf8;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.linkRowItem {
+  position: relative; /* For absolute thumb/del button */
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.75rem 2.5rem 0.75rem 0.75rem; /* Space on right for del btn */
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 0.75rem;
+  width: 100%;
+  display: block;
+}
+
+.linkBlock {
+  display: block;
+  width: 100%;
+}
+
+.linkTitle {
+  color: #f8fafc;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.linkUrl {
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 0.7rem;
+  display: block;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+.linkUrl:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.linkRowItem a:hover {
+  text-decoration: underline;
+}
+
+.linkDelBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.linkDelBtn:hover {
+  opacity: 1;
+}
+
+.addLinkRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  margin-top: 1rem;
+}
+
+.addLinkRow input:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.addLinkRow input:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.addLinkRow button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.addLinkRow button:hover {
+  background: #7dd3fc;
+  transform: scale(1.1);
+}
+
+.deleteBtn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+}
+
+.modalTaskId {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: .35rem 15rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copyIdBtn {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  padding: 0.2rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.copyIdBtn:hover {
+  background: rgba(56, 189, 248, 0.1);
+}
+
+
+.addLinkRow input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.addLinkRow input:focus {
+  border-color: #38bdf8;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.iconBtnMinimal {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  padding: 0 0.5rem;
+}
+.iconBtnMinimal:hover {
+  color: #38bdf8;
+}
+
+.mdHelpOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  border-radius: 1rem;
+}
+
+.mdHelpModal {
+  background: #1e293b;
+  border: 1px solid rgba(30, 41, 59, 1);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  width: 320px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.mdHelpModal h3 {
+  color: white;
+  margin-top: 0;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mdHelpModal pre {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 1.5rem;
+}
+
+/* Validation Modal Styles */
+.validationModalOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+}
+
+.validationModal {
+  background: #1e293b;
+  border: 1px solid #ef4444; /* Red border for validation */
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  width: 380px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  animation: modalIn 0.2s ease-out;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.validationModal span {
+  color: #f8fafc;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.mdHelpModal button {
+  width: 100%;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 700;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
